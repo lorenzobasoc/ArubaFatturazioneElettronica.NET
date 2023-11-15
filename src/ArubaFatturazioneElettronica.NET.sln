@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArubaFatturazioneElettronica.NET", "ArubaFatturazioneElettronica.NET/ArubaFatturazioneElettronica.NET.csproj", "{7F02AFFF-9D20-4AC8-B520-B8C966E42134}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F02AFFF-9D20-4AC8-B520-B8C966E42134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F02AFFF-9D20-4AC8-B520-B8C966E42134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F02AFFF-9D20-4AC8-B520-B8C966E42134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F02AFFF-9D20-4AC8-B520-B8C966E42134}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3E8B256-5817-4AC3-A5F8-9A244B262F52}
+	EndGlobalSection
+EndGlobal
