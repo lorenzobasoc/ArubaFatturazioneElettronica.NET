@@ -6,7 +6,7 @@ namespace ArubaFatturazioneElettronica.NET.Utilities;
 public static class HttpContentFactory
 {
     public static StringContent CreateAsJson(object data) {
-        var json = JsonSerializer.Serialize(data);
+        var json = JsonUtils.Serialize(data);
         return CreateAsString(json);
     }
 
