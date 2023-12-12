@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using ArubaFatturazioneElettronica.NET.Constants;
 
-namespace ArubaFatturazioneElettronica.NET.DTOs.Auth;
+namespace ArubaFatturazioneElettronica.NET.DTOs.Auth.Response;
 
 public class ArubaAccessTokenDto
 {

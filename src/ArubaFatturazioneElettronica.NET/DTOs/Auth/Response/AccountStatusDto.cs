@@ -1,4 +1,4 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs.Auth;
+namespace ArubaFatturazioneElettronica.NET.DTOs.Auth.Response;
 
 public class AccountStatusDto
 {
