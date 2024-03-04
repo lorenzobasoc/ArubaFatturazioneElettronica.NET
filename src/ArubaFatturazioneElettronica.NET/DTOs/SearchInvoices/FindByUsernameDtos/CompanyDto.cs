@@ -1,4 +1,4 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs.SearchSentInvoices.Response;
+namespace ArubaFatturazioneElettronica.NET.DTOs;
 
 public class CompanyDto
 {

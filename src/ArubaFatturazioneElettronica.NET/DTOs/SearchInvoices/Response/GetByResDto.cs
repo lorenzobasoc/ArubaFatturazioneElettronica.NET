@@ -1,6 +1,6 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs.SearchSentInvoices.Response;
+namespace ArubaFatturazioneElettronica.NET.DTOs.SearchInvoices.Response;
 
-public class SearchInvoiceContentDto
+public class GetByResDto
 {
     public string ErrorCode { get; set; }
     public string ErrorDescription { get; set; }
@@ -10,11 +10,12 @@ public class SearchInvoiceContentDto
     public string InvoiceType { get; set; }
     public string DocType { get; set; }
     public string File { get; set; }
-    public string FileName { get; set; }
+    public string Filename { get; set; }
     public InvoiceDto[] Invoices { get; set; }
     public string Username { get; set; }
     public string LastUpdate { get; set; }
     public string CreationDate { get; set; }
     public string IdSdi { get; set; }
-    public bool PddAvailable { get; set; }
+    public bool PdfAvailable { get; set; }
+    public string PdfFile { get; set; }
 }
