@@ -12,8 +12,8 @@ public class ArubaApi : IArubaApi
     public ISearchSentInvoices SearchSentInvoices { get; }
     public ISearchReceivedInvoices SearchReceivedInvoices { get; }
     public ISendOutcomeClient SendOutcomeClient { get; }
-    public ISearchNotificationSentInvoices SearchNotificationSentInvoices { get; }
-    public ISearchNotificationReceivedInvoices SearchNotificationReceivedInvoices { get; }
+    public ISearchSentInvoiceNotifications SearchNotificationSentInvoices { get; }
+    public ISearchReceivedInvoiceNotifications SearchNotificationReceivedInvoices { get; }
 
     public ArubaApi(string username, string password) {
         var requester = new HttpHandler();
@@ -24,7 +24,7 @@ public class ArubaApi : IArubaApi
         SearchSentInvoices = new SearchSentInvoices(requester);
         SearchReceivedInvoices = new SearchReceivedInvoices(requester);
         SendOutcomeClient = new SendOutcomeClient(requester);
-        SearchNotificationSentInvoices = new SearchNotificationSentInvoices(requester);
-        SearchNotificationReceivedInvoices = new SearchNotificationReceivedInvoices(requester);
+        SearchNotificationSentInvoices = new SearchSentInvoiceNotification(requester);
+        SearchNotificationReceivedInvoices = new SearchReceivedInvoiceNotifications(requester);
     }
 }

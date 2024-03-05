@@ -8,6 +8,6 @@ public interface IArubaApi
     ISearchSentInvoices SearchSentInvoices { get; }
     ISearchReceivedInvoices SearchReceivedInvoices { get; }
     ISendOutcomeClient SendOutcomeClient { get; }
-    ISearchNotificationSentInvoices SearchNotificationSentInvoices { get; }
-    ISearchNotificationReceivedInvoices SearchNotificationReceivedInvoices { get; }
+    ISearchSentInvoiceNotifications SearchNotificationSentInvoices { get; }
+    ISearchReceivedInvoiceNotifications SearchNotificationReceivedInvoices { get; }
 }

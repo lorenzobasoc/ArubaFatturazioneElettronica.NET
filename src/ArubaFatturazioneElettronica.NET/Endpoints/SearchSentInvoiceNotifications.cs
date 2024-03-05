@@ -3,11 +3,11 @@ using ArubaFatturazioneElettronica.NET.Interfaces;
 
 namespace ArubaFatturazioneElettronica.NET.Endpoints;
 
-public class SearchNotificationReceivedInvoices : ISearchNotificationReceivedInvoices
+public class SearchSentInvoiceNotification : ISearchSentInvoiceNotifications
 {
     private readonly HttpHandler _requester;
 
-    public SearchNotificationReceivedInvoices(HttpHandler requester) {
+    public SearchSentInvoiceNotification(HttpHandler requester) {
         _requester = requester;
     }
 }

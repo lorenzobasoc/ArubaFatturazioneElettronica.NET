@@ -1,6 +1,6 @@
 namespace ArubaFatturazioneElettronica.NET.Interfaces;
 
-public interface ISearchNotificationSentInvoices
+public interface ISearchReceivedInvoiceNotifications
 {
 
 }
