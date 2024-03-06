@@ -2,8 +2,6 @@ namespace ArubaFatturazioneElettronica.NET.Constants;
 
 public static class Urls
 {
-    public const string Id = "/{id}";
-
     private static class BaseUrls
     {
         // Prod: https://auth.fatturazioneelettronica.aruba.it
@@ -78,5 +76,14 @@ public static class Urls
         public const string GetByFilename = _base + "/services/notification/out/getByFilename";
         public const string GetByInvoiceFilename = _base + "/services/notification/out/getByInvoiceFilename";
         public const string GetByInvoiceId = _base + "/services/notification/out";
+    }
+
+    public static class SearchReceivedInvoiceNotification
+    {
+        private const string _base = BaseUrls.Others;
+
+        public const string GetByFilename = _base + "/services/notification/in/getByFilename";
+        public const string GetByInvoiceFilename = _base + "/services/notification/in/getByInvoiceFilename";
+        public const string GetByInvoiceId = _base + "/services/notification/in";
     }
 }

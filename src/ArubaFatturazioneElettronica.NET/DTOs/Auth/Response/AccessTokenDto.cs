@@ -3,7 +3,7 @@ using ArubaFatturazioneElettronica.NET.Constants;
 
 namespace ArubaFatturazioneElettronica.NET.DTOs.Auth.Response;
 
-public class ArubaAccessTokenDto
+public class AccessTokenDto
 {
     public string Access_token { get; set; }
     public string Token_type { get; set; }
@@ -16,4 +16,6 @@ public class ArubaAccessTokenDto
     public string CreationDate { get; set; }
     [JsonPropertyName(DtosConstants.JSON_PROP_EXPIRES)]
     public string ExpirationDate { get; set; }
+    public string Error { get; set; }
+    public string Error_description { get; set; }
 }

@@ -1,5 +1,4 @@
 using System.Text;
-using System.Text.Json;
 
 namespace ArubaFatturazioneElettronica.NET.Utilities;
 

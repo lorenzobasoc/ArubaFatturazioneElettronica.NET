@@ -1,6 +1,7 @@
 using ArubaFatturazioneElettronica.NET.Comunication;
 using ArubaFatturazioneElettronica.NET.Endpoints;
 using ArubaFatturazioneElettronica.NET.Interfaces;
+using ArubaFatturazioneElettronica.NET.Services;
 
 namespace ArubaFatturazioneElettronica.NET;
 
@@ -17,14 +18,14 @@ public class ArubaApi : IArubaApi
 
     public ArubaApi(string username, string password) {
         var requester = new HttpHandler();
-
-        Auth = new Auth(requester, username, password);
-        FinancialCommunications = new FinancialCommunications(requester);
-        SendInvoices = new SendInvoices(requester);
-        SearchSentInvoices = new SearchSentInvoices(requester);
-        SearchReceivedInvoices = new SearchReceivedInvoices(requester);
-        SendOutcomeClient = new SendOutcomeClient(requester);
-        SearchNotificationSentInvoices = new SearchSentInvoiceNotification(requester);
-        SearchNotificationReceivedInvoices = new SearchReceivedInvoiceNotifications(requester);
+        var httpService = new HttpService(username, password, requester);
+        Auth = new Auth(httpService);
+        FinancialCommunications = new FinancialCommunications(httpService);
+        SendInvoices = new SendInvoices(httpService);
+        SearchSentInvoices = new SearchSentInvoices(httpService);
+        SearchReceivedInvoices = new SearchReceivedInvoices(httpService);
+        SendOutcomeClient = new SendOutcomeClient(httpService);
+        SearchNotificationSentInvoices = new SearchSentInvoiceNotification(httpService);
+        SearchNotificationReceivedInvoices = new SearchReceivedInvoiceNotifications(httpService);
     }
 }

@@ -1,13 +1,13 @@
-using ArubaFatturazioneElettronica.NET.Comunication;
 using ArubaFatturazioneElettronica.NET.Interfaces;
+using ArubaFatturazioneElettronica.NET.Services;
 
 namespace ArubaFatturazioneElettronica.NET.Endpoints;
 
 public class SearchReceivedInvoiceNotifications : ISearchReceivedInvoiceNotifications
 {
-    private readonly HttpHandler _requester;
+    private readonly HttpService _requester;
 
-    public SearchReceivedInvoiceNotifications(HttpHandler requester) {
+    public SearchReceivedInvoiceNotifications(HttpService requester) {
         _requester = requester;
     }
 }

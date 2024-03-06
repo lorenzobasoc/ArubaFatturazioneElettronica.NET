@@ -1,13 +1,13 @@
-using ArubaFatturazioneElettronica.NET.Comunication;
 using ArubaFatturazioneElettronica.NET.Interfaces;
+using ArubaFatturazioneElettronica.NET.Services;
 
 namespace ArubaFatturazioneElettronica.NET.Endpoints;
 
 public class SendOutcomeClient : ISendOutcomeClient
 {
-    private readonly HttpHandler _requester;
+    private readonly HttpService _requester;
 
-    public SendOutcomeClient(HttpHandler requester) {
+    public SendOutcomeClient(HttpService requester) {
         _requester = requester;
     }
 }
