@@ -2,6 +2,7 @@ using ArubaFatturazioneElettronica.NET.Constants;
 using ArubaFatturazioneElettronica.NET.DTOs.Auth.Response;
 using ArubaFatturazioneElettronica.NET.Interfaces;
 using ArubaFatturazioneElettronica.NET.Services;
+using ArubaFatturazioneElettronica.NET.Utilities;
 
 namespace ArubaFatturazioneElettronica.NET.Endpoints;
 
@@ -27,8 +28,16 @@ public class Auth : IAuth
         return responseDto;
     }
 
-    public async Task<MulticedentiDto> GetMulticedenti() {
-        var responseDto = await _httpService.SendGetRequest<MulticedentiDto>(Urls.Auth.Multicedenti, null);
+    public async Task<MulticedentiDto> GetMulticedenti(string countryCode = null, string vatCode = null, string status = null, int size = 10, int page = 1) {
+        var queryParams = new Dictionary<string, string> {
+            {nameof(countryCode), countryCode},
+            {nameof(vatCode), vatCode},
+            {nameof(status), status},
+            {nameof(size), size.ToString()},
+            {nameof(page), page.ToString()},
+        };
+        var queryString = HttpUtils.ComposeQueryString(queryParams);
+        var responseDto = await _httpService.SendGetRequest<MulticedentiDto>(Urls.Auth.Multicedenti, queryString);
         return responseDto;
     }
 

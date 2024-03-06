@@ -46,7 +46,7 @@ public class HttpHandler
         return request;
     }
 
-    private string BuildArgumentsString(List<string> arguments) {
+    private static string BuildArgumentsString(List<string> arguments) {
         return arguments
             .Where(arg => !string.IsNullOrWhiteSpace(arg))
             .Aggregate(string.Empty, (current, arg) => current + "&" + arg);
