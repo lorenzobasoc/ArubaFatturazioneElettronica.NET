@@ -3,11 +3,7 @@ using ArubaFatturazioneElettronica.NET.Services;
 
 namespace ArubaFatturazioneElettronica.NET.Endpoints;
 
-public class SearchSentInvoices : ISearchSentInvoices
+public class SearchSentInvoices(HttpService requester) : ISearchSentInvoices
 {
-    private readonly HttpService _requester;
-
-    public SearchSentInvoices(HttpService requester) {
-        _requester = requester;
-    }
+    private readonly HttpService _requester = requester;
 }

@@ -1,0 +1,2 @@
+- Endpoint di Auth: renderlo accessibile?
+- Binary come response: come gestirlo?

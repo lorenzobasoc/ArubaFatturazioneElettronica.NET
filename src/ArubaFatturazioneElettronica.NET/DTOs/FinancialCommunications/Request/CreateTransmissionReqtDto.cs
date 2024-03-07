@@ -1,6 +1,6 @@
 namespace ArubaFatturazioneElettronica.NET.DTOs.FinancialComunications.Request;
 
-public class CreateTransmissionRequest
+public class CreateTransmissionReqtDto
 {
     public string UserID { get; set; }
     public string UserName { get; set; }

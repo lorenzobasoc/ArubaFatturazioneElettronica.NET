@@ -3,11 +3,7 @@ using ArubaFatturazioneElettronica.NET.Services;
 
 namespace ArubaFatturazioneElettronica.NET.Endpoints;
 
-public class SendOutcomeClient : ISendOutcomeClient
+public class SendOutcomeClient(HttpService requester) : ISendOutcomeClient
 {
-    private readonly HttpService _requester;
-
-    public SendOutcomeClient(HttpService requester) {
-        _requester = requester;
-    }
+    private readonly HttpService _requester = requester;
 }

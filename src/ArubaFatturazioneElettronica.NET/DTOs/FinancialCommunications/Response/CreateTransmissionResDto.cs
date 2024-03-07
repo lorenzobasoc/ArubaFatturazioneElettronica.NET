@@ -1,6 +1,6 @@
 namespace ArubaFatturazioneElettronica.NET.DTOs.FinancialComunications.Response;
 
-public class CreateTransmissionResponse
+public class CreateTransmissionResDto
 {
     public string ErrorCode { get; set; }
     public string ErrorDescription { get; set; }

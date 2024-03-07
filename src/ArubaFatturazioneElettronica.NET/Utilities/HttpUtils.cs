@@ -8,4 +8,10 @@ public class HttpUtils
             .Select(kv => $"{kv.Key}={kv.Value}")
             .ToList();
     }
+
+    public static Dictionary<string, string> ComposePostBody<T>(T dto) {
+       var json = JsonUtils.Serialize(dto);
+       var dictionary = JsonUtils.Deserialize<Dictionary<string, string>>(json);
+       return dictionary;
+    }
 }

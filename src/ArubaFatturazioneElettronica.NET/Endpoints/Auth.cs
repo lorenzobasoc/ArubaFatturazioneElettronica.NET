@@ -6,13 +6,9 @@ using ArubaFatturazioneElettronica.NET.Utilities;
 
 namespace ArubaFatturazioneElettronica.NET.Endpoints;
 
-public class Auth : IAuth
+public class Auth(HttpService httpService) : IAuth
 {
-    private readonly HttpService _httpService;
-
-    public Auth(HttpService httpService) {
-        _httpService = httpService;
-    }
+    private readonly HttpService _httpService = httpService;
 
     // public async Task<AccessTokenDto> SignIn() {
     //     var dto = await _httpService.SignIn();
