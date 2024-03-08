@@ -1,2 +1,8 @@
 - Endpoint di Auth: renderlo accessibile?
+- In FianncialComm create si spacca, ritorna 415
 - Binary come response: come gestirlo?
+    - pdd in FinancialComunications
+    - getZipByFilename in SearchSentInvoices
+    - pdd in SearchSentInvoices
+- Paramentri esclusivi
+    - pdd in SearchSentInvoices
