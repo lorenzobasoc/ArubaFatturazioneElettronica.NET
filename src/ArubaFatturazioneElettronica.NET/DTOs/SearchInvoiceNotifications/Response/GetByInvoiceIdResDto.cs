@@ -1,6 +1,6 @@
 namespace ArubaFatturazioneElettronica.NET.DTOs.SearchInvoiceNotifications.Response;
 
-public class GetByInvoiceIdResDto
+public class GetByInvoiceIdNotifyResDto
 {
     public string ErrorCode { get; set; }
     public string ErrorDescription { get; set; }
