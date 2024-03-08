@@ -2,7 +2,8 @@
 - In FianncialComm create si spacca, ritorna 415
 - Binary come response: come gestirlo?
     - pdd in FinancialComunications
-    - getZipByFilename in SearchSentInvoices
+    - getZipByFilename in SearchSentInvoices e SearchREceivedInvoices
     - pdd in SearchSentInvoices
 - Paramentri esclusivi
     - pdd in SearchSentInvoices
+    - GetInvoiceWithUnsignedFile in search received invoices
