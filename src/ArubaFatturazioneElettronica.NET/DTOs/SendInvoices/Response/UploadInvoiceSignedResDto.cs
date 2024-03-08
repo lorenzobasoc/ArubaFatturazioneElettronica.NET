@@ -1,6 +1,6 @@
 namespace ArubaFatturazioneElettronica.NET.DTOs.SendInvoices.Response;
 
-public class UploadInvoiceSignedResponseDto
+public class UploadInvoiceSignedResDto
 {
     public string ErrorCode { get; set; }
     public string ErrorDescription { get; set; }
