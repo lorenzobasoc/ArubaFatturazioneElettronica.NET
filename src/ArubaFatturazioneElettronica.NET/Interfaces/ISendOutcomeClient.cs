@@ -1,5 +1,5 @@
-using ArubaFatturazioneElettronica.NET.DTOs.SendOutcomeClient.Request;
-using ArubaFatturazioneElettronica.NET.DTOs.SendOutcomeClient.Response;
+using ArubaFatturazioneElettronica.NET.Dtos.SendOutcomeClient.Request;
+using ArubaFatturazioneElettronica.NET.Dtos.SendOutcomeClient.Response;
 
 namespace ArubaFatturazioneElettronica.NET.Interfaces;
 

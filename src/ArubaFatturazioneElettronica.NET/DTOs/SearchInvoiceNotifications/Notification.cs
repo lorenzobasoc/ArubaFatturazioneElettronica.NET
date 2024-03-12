@@ -1,4 +1,4 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs.SearchInvoiceNotifications;
+namespace ArubaFatturazioneElettronica.NET.Dtos.SearchInvoiceNotifications;
 
 public class Notification
 {

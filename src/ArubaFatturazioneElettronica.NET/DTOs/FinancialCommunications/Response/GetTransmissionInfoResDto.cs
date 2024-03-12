@@ -1,4 +1,4 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs.FinancialComunications.Response;
+namespace ArubaFatturazioneElettronica.NET.Dtos.FinancialComunications.Response;
 
 public class GetTransmissionInfoResDto
 {

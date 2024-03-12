@@ -1,4 +1,4 @@
-using ArubaFatturazioneElettronica.NET.DTOs.SearchInvoiceNotifications.Response;
+using ArubaFatturazioneElettronica.NET.Dtos.SearchInvoiceNotifications.Response;
 
 namespace ArubaFatturazioneElettronica.NET.Interfaces;
 

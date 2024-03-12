@@ -1,5 +1,5 @@
 using ArubaFatturazioneElettronica.NET.Constants;
-using ArubaFatturazioneElettronica.NET.DTOs.Auth.Response;
+using ArubaFatturazioneElettronica.NET.Dtos.Auth.Response;
 using ArubaFatturazioneElettronica.NET.Interfaces;
 using ArubaFatturazioneElettronica.NET.Services;
 using ArubaFatturazioneElettronica.NET.Utilities;

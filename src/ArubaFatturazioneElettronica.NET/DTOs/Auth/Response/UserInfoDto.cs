@@ -1,4 +1,4 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs.Auth.Response;
+namespace ArubaFatturazioneElettronica.NET.Dtos.Auth.Response;
 
 public class UserInfoDto
 {

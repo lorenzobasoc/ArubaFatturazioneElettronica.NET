@@ -1,4 +1,4 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs.SendInvoices.Request;
+namespace ArubaFatturazioneElettronica.NET.Dtos.SendInvoices.Request;
 
 public class UploadInvoiceSignedReqDto
 {

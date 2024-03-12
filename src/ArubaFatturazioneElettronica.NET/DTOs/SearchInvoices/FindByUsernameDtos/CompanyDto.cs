@@ -1,4 +1,4 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs;
+namespace ArubaFatturazioneElettronica.NET.Dtos;
 
 public class CompanyDto
 {

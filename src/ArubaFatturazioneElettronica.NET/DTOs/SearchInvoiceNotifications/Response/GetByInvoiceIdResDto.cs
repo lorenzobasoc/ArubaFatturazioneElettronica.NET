@@ -1,4 +1,4 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs.SearchInvoiceNotifications.Response;
+namespace ArubaFatturazioneElettronica.NET.Dtos.SearchInvoiceNotifications.Response;
 
 public class GetByInvoiceIdNotifyResDto
 {

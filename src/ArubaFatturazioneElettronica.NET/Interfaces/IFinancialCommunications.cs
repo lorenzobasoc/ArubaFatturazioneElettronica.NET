@@ -1,5 +1,5 @@
-using ArubaFatturazioneElettronica.NET.DTOs.FinancialComunications.Request;
-using ArubaFatturazioneElettronica.NET.DTOs.FinancialComunications.Response;
+using ArubaFatturazioneElettronica.NET.Dtos.FinancialComunications.Request;
+using ArubaFatturazioneElettronica.NET.Dtos.FinancialComunications.Response;
 
 namespace ArubaFatturazioneElettronica.NET.Interfaces;
 

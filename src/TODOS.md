@@ -7,4 +7,4 @@
 - Paramentri esclusivi
     - pdd in SearchSentInvoices
     - GetInvoiceWithUnsignedFile in search received invoices
-- Rename Search invoice e Search invoice notification DTOs
+- Rename Search invoice e Search invoice notification Dtos

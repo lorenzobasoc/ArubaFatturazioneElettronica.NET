@@ -1,4 +1,4 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs.SearchInvoices.Response;
+namespace ArubaFatturazioneElettronica.NET.Dtos.SearchInvoices.Response;
 
 public class GetInvoiceWithUnsignedFileResDto : GetByResDto
 {

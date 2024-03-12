@@ -1,6 +1,6 @@
 using ArubaFatturazioneElettronica.NET.Constants;
-using ArubaFatturazioneElettronica.NET.DTOs.SendOutcomeClient.Request;
-using ArubaFatturazioneElettronica.NET.DTOs.SendOutcomeClient.Response;
+using ArubaFatturazioneElettronica.NET.Dtos.SendOutcomeClient.Request;
+using ArubaFatturazioneElettronica.NET.Dtos.SendOutcomeClient.Response;
 using ArubaFatturazioneElettronica.NET.Interfaces;
 using ArubaFatturazioneElettronica.NET.Services;
 using ArubaFatturazioneElettronica.NET.Utilities;

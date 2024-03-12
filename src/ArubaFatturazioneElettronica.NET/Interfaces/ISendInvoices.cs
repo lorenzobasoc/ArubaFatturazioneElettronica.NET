@@ -1,5 +1,5 @@
-using ArubaFatturazioneElettronica.NET.DTOs.SendInvoices.Request;
-using ArubaFatturazioneElettronica.NET.DTOs.SendInvoices.Response;
+using ArubaFatturazioneElettronica.NET.Dtos.SendInvoices.Request;
+using ArubaFatturazioneElettronica.NET.Dtos.SendInvoices.Response;
 
 namespace ArubaFatturazioneElettronica.NET.Interfaces;
 

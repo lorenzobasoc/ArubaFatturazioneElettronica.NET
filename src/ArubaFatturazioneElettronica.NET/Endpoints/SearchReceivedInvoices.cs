@@ -1,5 +1,5 @@
 using ArubaFatturazioneElettronica.NET.Constants;
-using ArubaFatturazioneElettronica.NET.DTOs.SearchInvoices.Response;
+using ArubaFatturazioneElettronica.NET.Dtos.SearchInvoices.Response;
 using ArubaFatturazioneElettronica.NET.Interfaces;
 using ArubaFatturazioneElettronica.NET.Services;
 using ArubaFatturazioneElettronica.NET.Utilities;

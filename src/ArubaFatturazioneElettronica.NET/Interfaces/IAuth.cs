@@ -1,4 +1,4 @@
-using ArubaFatturazioneElettronica.NET.DTOs.Auth.Response;
+using ArubaFatturazioneElettronica.NET.Dtos.Auth.Response;
 
 namespace ArubaFatturazioneElettronica.NET.Interfaces;
 

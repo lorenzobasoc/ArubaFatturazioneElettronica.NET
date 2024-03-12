@@ -1,4 +1,4 @@
-namespace ArubaFatturazioneElettronica.NET.DTOs.SendOutcomeClient.Request;
+namespace ArubaFatturazioneElettronica.NET.Dtos.SendOutcomeClient.Request;
 
 public class SendOutcomeClientReqDto
 {

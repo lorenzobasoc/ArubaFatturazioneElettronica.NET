@@ -1,6 +1,6 @@
 using ArubaFatturazioneElettronica.NET.Constants;
-using ArubaFatturazioneElettronica.NET.DTOs.FinancialComunications.Request;
-using ArubaFatturazioneElettronica.NET.DTOs.FinancialComunications.Response;
+using ArubaFatturazioneElettronica.NET.Dtos.FinancialComunications.Request;
+using ArubaFatturazioneElettronica.NET.Dtos.FinancialComunications.Response;
 using ArubaFatturazioneElettronica.NET.Interfaces;
 using ArubaFatturazioneElettronica.NET.Services;
 using ArubaFatturazioneElettronica.NET.Utilities;
