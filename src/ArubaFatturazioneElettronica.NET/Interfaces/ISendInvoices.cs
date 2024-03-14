@@ -7,4 +7,6 @@ public interface ISendInvoices
 {
     Task<UploadInvoiceResponseDto> UploadInvoice(UploadInvoiceReqDto dto);
     Task<UploadInvoiceSignedResDto> UploadInvoiceSigned(UploadInvoiceSignedReqDto dto);
+    Task<UploadInvoiceResponseDto> UploadInvoice(UploadInvoiceXmlReqDto dto);
+    Task<UploadInvoiceSignedResDto> UploadInvoiceSigned(UploadInvoiceSignedXmlReqDto dto);
 }

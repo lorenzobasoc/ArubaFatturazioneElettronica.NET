@@ -2,7 +2,7 @@ namespace ArubaFatturazioneElettronica.NET.Dtos.SendInvoices.Request;
 
 public class UploadInvoiceReqDto
 {
-    public string DataFile { get; set; }
+    public InoviceDataDto Data { get; set; }
     public string Credential { get; set; }
     public string Domain { get; set; }
     public string SenderPIVA { get; set; }
