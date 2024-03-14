@@ -1,3 +1,4 @@
+using System.Text;
 using ArubaFatturazioneElettronica.NET.Constants;
 using ArubaFatturazioneElettronica.NET.Dtos.SendInvoices.Request;
 using ArubaFatturazioneElettronica.NET.Dtos.SendInvoices.Response;
@@ -14,7 +15,9 @@ public class SendInvoices(HttpService httpService) : ISendInvoices
     public async Task<UploadInvoiceResponseDto> UploadInvoice(UploadInvoiceReqDto dto) {
         var fatturaElettronica = InvoiceUtilities.CreateFatturaElettronica(dto.Data);
         var xml = await InvoiceUtilities.CreateXml(fatturaElettronica);
-        var data = HttpUtils.ComposePostBody(new { xml, dto.SenderPIVA, dto.SkipExtraSchema, dto.Credential, dto.Domain });
+        var bytes = Encoding.ASCII.GetBytes(xml);
+        var invoiceBase64 = HttpUtils.Convert(bytes);
+        var data = HttpUtils.ComposePostBody(new { invoiceBase64, dto.SenderPIVA, dto.SkipExtraSchema, dto.Credential, dto.Domain });
         var responseDto = await _httpService.SendPostRequest<UploadInvoiceResponseDto>(Urls.SendInvoices.Upload, data);
         return responseDto;
     }
@@ -22,19 +25,25 @@ public class SendInvoices(HttpService httpService) : ISendInvoices
     public async Task<UploadInvoiceSignedResDto> UploadInvoiceSigned(UploadInvoiceSignedReqDto dto) {
         var fatturaElettronica = InvoiceUtilities.CreateFatturaElettronica(dto.Data);
         var xml = await InvoiceUtilities.CreateXml(fatturaElettronica);
-        var data = HttpUtils.ComposePostBody(new { xml, dto.SenderPIVA, dto.SkipExtraSchema });
+        var bytes = Encoding.ASCII.GetBytes(xml);
+        var invoiceBase64 = HttpUtils.Convert(bytes);
+        var data = HttpUtils.ComposePostBody(new { invoiceBase64, dto.SenderPIVA, dto.SkipExtraSchema });
         var responseDto = await _httpService.SendPostRequest<UploadInvoiceSignedResDto>(Urls.SendInvoices.UploadSigned, data);
         return responseDto;
     }
 
     public async Task<UploadInvoiceResponseDto> UploadInvoice(UploadInvoiceXmlReqDto dto) {
-        var data = HttpUtils.ComposePostBody(dto);
+        var bytes = Encoding.ASCII.GetBytes(dto.Xml);
+        var invoiceBase64 = HttpUtils.Convert(bytes);
+        var data = HttpUtils.ComposePostBody(new { invoiceBase64, dto.SenderPIVA, dto.SkipExtraSchema, dto.Credential, dto.Domain });
         var responseDto = await _httpService.SendPostRequest<UploadInvoiceResponseDto>(Urls.SendInvoices.Upload, data);
         return responseDto;
     }
 
     public async Task<UploadInvoiceSignedResDto> UploadInvoiceSigned(UploadInvoiceSignedXmlReqDto dto) {
-        var data = HttpUtils.ComposePostBody(dto);
+        var bytes = Encoding.ASCII.GetBytes(dto.Xml);
+        var invoiceBase64 = HttpUtils.Convert(bytes);
+        var data = HttpUtils.ComposePostBody(new { invoiceBase64, dto.SenderPIVA, dto.SkipExtraSchema });
         var responseDto = await _httpService.SendPostRequest<UploadInvoiceSignedResDto>(Urls.SendInvoices.UploadSigned, data);
         return responseDto;
     }

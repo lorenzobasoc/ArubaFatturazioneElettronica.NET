@@ -14,4 +14,11 @@ public class HttpUtils
        var dictionary = JsonUtils.Deserialize<Dictionary<string, string>>(json);
        return dictionary;
     }
+
+    public static string Convert(byte[] bytes) { 
+        if (bytes == null || bytes.Length == 0) {
+            return string.Empty;
+        }
+        return System.Convert.ToBase64String(bytes);
+    }
 }

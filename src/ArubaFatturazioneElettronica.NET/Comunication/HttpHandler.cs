@@ -1,4 +1,5 @@
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using ArubaFatturazioneElettronica.NET.Utilities;
 using static ArubaFatturazioneElettronica.NET.Constants.HttpConstants.Auth;
 
@@ -36,10 +37,13 @@ public class HttpHandler
         return request;
     }
 
-    public HttpRequestMessage PreparePostRequest(string url, Dictionary<string, string> data, string accessToken) {
-        var request = new HttpRequestMessage(HttpMethod.Post, url) {
-            Content = new FormUrlEncodedContent(data)
-        };
+    public HttpRequestMessage PreparePostRequest(string url, Dictionary<string, string> data, string accessToken, bool isUrlEncodedBody = false) {
+        var request = new HttpRequestMessage(HttpMethod.Post, url);
+        if (isUrlEncodedBody) {
+            request.Content = new FormUrlEncodedContent(data);
+        } else {
+            request.Content = HttpContentFactory.CreateAsJson(data);
+        }
         if (accessToken != null) {
             request.Headers.Authorization = new AuthenticationHeaderValue(AUTH_BEARER, accessToken);
         }

@@ -26,9 +26,9 @@ public class HttpService
     }
 
     
-    public async Task<T> SendPostRequest<T>(string url, Dictionary<string, string> data) {
+    public async Task<T> SendPostRequest<T>(string url, Dictionary<string, string> data, bool isUrlEncodedBody = false) {
         var tokenDto = await SignIn();
-        var request = _requester.PreparePostRequest(url, data, tokenDto.Access_token);
+        var request = _requester.PreparePostRequest(url, data, tokenDto.Access_token, isUrlEncodedBody);
         var responseDto = await GetResponseDto<T>(request);
         return responseDto;
     }
@@ -46,7 +46,7 @@ public class HttpService
             { BodyContent.USERNAME, _username },
             { BodyContent.PASSWORD, _password },
         };
-        var request = _requester.PreparePostRequest(Urls.Auth.SingIn, data, null);
+        var request = _requester.PreparePostRequest(Urls.Auth.SingIn, data, null, true);
         var responseDto = await GetResponseDto<AccessTokenDto>(request);
         return responseDto;
     }
