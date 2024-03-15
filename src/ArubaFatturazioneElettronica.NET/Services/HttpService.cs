@@ -59,7 +59,6 @@ public class HttpService
         return result;
     }
 
-
     private async Task<T> GetResponseDto<T>(HttpRequestMessage request) {
         var response = await _requester.Send(request);
         var content = await response.Content.ReadAsStringAsync();

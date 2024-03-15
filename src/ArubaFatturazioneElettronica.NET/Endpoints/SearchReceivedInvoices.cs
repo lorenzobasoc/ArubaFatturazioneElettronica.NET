@@ -71,7 +71,12 @@ public class SearchReceivedInvoices(HttpService http_Service) : ISearchReceivedI
         return responseDto;
     }
 
-    public async Task<GetInvoiceWithUnsignedFileResDto> GetInvoiceWithUnsignedFile(bool includeFile = false) {
+    public async Task<GetInvoiceWithUnsignedFileResDto> GetInvoiceWithUnsignedFile(string invoiceFilename, string invoiceId, bool includeFile = false) {
+        if (string.IsNullOrEmpty(invoiceFilename) && string.IsNullOrEmpty(invoiceId)) {
+            return new GetInvoiceWithUnsignedFileResDto {
+                ErrorDescription = $"Please insert at least one between {nameof(invoiceFilename)} and {nameof(invoiceId)}",
+            };
+        }
          var queryParams = new Dictionary<string, string> {
             {nameof(includeFile), includeFile.ToString()},
         };
@@ -81,6 +86,11 @@ public class SearchReceivedInvoices(HttpService http_Service) : ISearchReceivedI
     }
 
     public async Task<StreamResultDto> Pdd(string invoiceFilename, string invoiceId) {
+        if (string.IsNullOrEmpty(invoiceFilename) && string.IsNullOrEmpty(invoiceId)) {
+            return new StreamResultDto {
+                Message = $"Please insert at least one between {nameof(invoiceFilename)} and {nameof(invoiceId)}",
+            };
+        }
         var queryParams = new Dictionary<string, string> {
             {nameof(invoiceFilename), invoiceFilename},
             {nameof(invoiceId), invoiceId},

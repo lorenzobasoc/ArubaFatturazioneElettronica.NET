@@ -72,6 +72,11 @@ public class SearchSentInvoices(HttpService httpService) : ISearchSentInvoices
     }
 
     public async Task<StreamResultDto> Pdd(string invoiceFilename, string invoiceId) {
+        if (string.IsNullOrEmpty(invoiceFilename) && string.IsNullOrEmpty(invoiceId)) {
+            return new StreamResultDto {
+                Message = $"Please insert at least one between {nameof(invoiceFilename)} and {nameof(invoiceId)}",
+            };
+        }
         var queryParams = new Dictionary<string, string> {
             {nameof(invoiceFilename), invoiceFilename},
             {nameof(invoiceId), invoiceId},
