@@ -1,4 +1,5 @@
 using ArubaFatturazioneElettronica.NET.Constants;
+using ArubaFatturazioneElettronica.NET.Dtos;
 using ArubaFatturazioneElettronica.NET.Dtos.SearchInvoices.Response;
 using ArubaFatturazioneElettronica.NET.Interfaces;
 using ArubaFatturazioneElettronica.NET.Services;
@@ -40,14 +41,14 @@ public class SearchSentInvoices(HttpService httpService) : ISearchSentInvoices
         return responseDto;
     }
 
-    // public async Task<GetByFilenameResDto> GetZipByFilename(string filename) {
-    //     var queryParams = new Dictionary<string, string> {
-    //         {nameof(filename), filename},
-    //     };
-    //     var queryString = HttpUtils.ComposeQueryString(queryParams);
-    //     var responseDto = await _httpService.SendGetRequest<GetByFilenameResDto>(Urls.SearchSentInvoices.GetZipByFilename, queryString);
-    //     return responseDto;
-    // }
+    public async Task<StreamResultDto> GetZipByFilename(string filename) {
+        var queryParams = new Dictionary<string, string> {
+            {nameof(filename), filename},
+        };
+        var queryString = HttpUtils.ComposeQueryString(queryParams);
+        var responseDto = await _httpService.SendStreamGetRequest(Urls.SearchSentInvoices.GetZipByFilename, queryString);
+        return responseDto;
+    }
 
     public async Task<GetByInvoiceIdResDto> GetByInvoiceId(string invoiceId, bool includePdf = false, bool includeFile = true) {
         var queryParams = new Dictionary<string, string> {
@@ -70,7 +71,13 @@ public class SearchSentInvoices(HttpService httpService) : ISearchSentInvoices
         return responseDto;
     }
 
-    // public async Task Pdd() {
-
-    // }
+    public async Task<StreamResultDto> Pdd(string invoiceFilename, string invoiceId) {
+        var queryParams = new Dictionary<string, string> {
+            {nameof(invoiceFilename), invoiceFilename},
+            {nameof(invoiceId), invoiceId},
+        };
+        var queryString = HttpUtils.ComposeQueryString(queryParams);
+        var stream = await _httpService.SendStreamGetRequest(Urls.SearchSentInvoices.Pdd, queryString);
+        return stream;
+    }
 }

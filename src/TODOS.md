@@ -3,6 +3,7 @@
     - pdd in FinancialComunications
     - getZipByFilename in SearchSentInvoices e SearchREceivedInvoices
     - pdd in SearchSentInvoices
+    - pdd in SearchReceivedInvoices
 - Paramentri esclusivi
     - pdd in SearchSentInvoices
     - GetInvoiceWithUnsignedFile in search received invoices

@@ -46,7 +46,7 @@ public static class Urls
         public const string GetZipByFilename = _base + "/services/invoice/out/getZipByFilename";
         public const string GetByInvoiceId = _base + "/services/invoice/out";
         public const string GetByIdSdi = _base + "/services/invoice/out/getByIdSdi";
-        public const string GetByPdd = _base + "/services/invoice/out/pdd";
+        public const string Pdd = _base + "/services/invoice/out/pdd";
     }
 
     public static class SearchReceivedInvoices
@@ -58,7 +58,7 @@ public static class Urls
         public const string GetZipByFilename = _base + "/services/invoice/in/getZipByFilename";
         public const string GetByInvoiceId = _base + "/services/invoice/in";
         public const string GetByIdSdi = _base + "/services/invoice/in/getByIdSdi";
-        public const string GetByPdd = _base + "/services/invoice/in/pdd";
+        public const string Pdd = _base + "/services/invoice/in/pdd";
         public const string GetWithUnsignedFile = _base + "/services/invoice/in/getInvoiceWithUnsignedFile";
     }
 

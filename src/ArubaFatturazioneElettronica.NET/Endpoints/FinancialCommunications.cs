@@ -1,4 +1,5 @@
 using ArubaFatturazioneElettronica.NET.Constants;
+using ArubaFatturazioneElettronica.NET.Dtos;
 using ArubaFatturazioneElettronica.NET.Dtos.FinancialComunications.Request;
 using ArubaFatturazioneElettronica.NET.Dtos.FinancialComunications.Response;
 using ArubaFatturazioneElettronica.NET.Interfaces;
@@ -23,11 +24,9 @@ public class FinancialCommunications(HttpService httpService) : IFinancialCommun
         return responseDto;
     }
 
-    // TODO: return binary ?
-
-    // public async Task Pdd(PddReqDto dto) {
-    //     var data = HttpUtils.ComposePostBody(dto);
-    //     var responseDto = await _httpService.SendPostRequest<GetTransmissionInfoResDto>(Urls.FinancialCommunications.Pdd, data);
-    //     return responseDto;
-    // }
+    public async Task<StreamResultDto> Pdd(PddReqDto dto) {
+        var data = HttpUtils.ComposePostBody(dto);
+        var responseDto = await _httpService.SendStreamPostRequest(Urls.FinancialCommunications.Pdd, data);
+        return responseDto;
+    }
 }
