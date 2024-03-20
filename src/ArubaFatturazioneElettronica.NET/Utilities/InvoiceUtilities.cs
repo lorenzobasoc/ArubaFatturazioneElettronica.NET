@@ -167,8 +167,8 @@ public class InvoiceUtilities
                 Descrizione = items[i].Description,
                 Quantita = items[i].Quantity + 0.00M,
                 UnitaMisura = items[i].MeasureUnit,
-                PrezzoUnitario = items[i].UnitPrice,
-                PrezzoTotale = items[i].UnitPrice * items[i].Quantity,
+                PrezzoUnitario = items[i].UnitPrice + 0.00M,
+                PrezzoTotale = items[i].UnitPrice * items[i].Quantity + 0.00M,
             };
             AddVat(newLine, items[i].Vat);
             detailLines.Add(newLine);

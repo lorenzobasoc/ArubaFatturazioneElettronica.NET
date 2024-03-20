@@ -33,7 +33,7 @@ public static class Urls
     {
         private const string _base = BaseUrls.Others;
 
-        public const string Upload = _base + "services/invoice/upload";
+        public const string Upload = _base + "/services/invoice/upload";
         public const string UploadSigned = _base + "/services/invoice/uploadSigned";
     }
 

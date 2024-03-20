@@ -33,23 +33,29 @@ public class SendInvoices(HttpService httpService) : ISendInvoices
         var dataFile = HttpUtils.Convert(bytes);
         var skipExtraSchema = dto.SkipExtraSchema.ToString();
         var senderPIVA = dto.SenderPIVA ?? "";
-        var data = HttpUtils.ComposePostBody(new { dataFile, senderPIVA, skipExtraSchema, });
+        var data = HttpUtils.ComposePostBody(new { dataFile, senderPIVA, skipExtraSchema });
         var responseDto = await _httpService.SendPostRequest<UploadInvoiceSignedResDto>(Urls.SendInvoices.UploadSigned, data);
         return responseDto;
     }
 
     public async Task<UploadInvoiceResponseDto> UploadInvoice(UploadInvoiceXmlReqDto dto) {
         var bytes = Encoding.ASCII.GetBytes(dto.Xml);
-        var invoiceBase64 = HttpUtils.Convert(bytes);
-        var data = HttpUtils.ComposePostBody(new { invoiceBase64, dto.SenderPIVA, dto.SkipExtraSchema, dto.Credential, dto.Domain });
+        var dataFile = HttpUtils.Convert(bytes);
+        var skipExtraSchema = dto.SkipExtraSchema.ToString();
+        var senderPIVA = dto.SenderPIVA ?? "";
+        var credential = dto.Credential ?? "";
+        var domain = dto.Domain ?? "";
+        var data = HttpUtils.ComposePostBody(new { dataFile, senderPIVA, skipExtraSchema, credential, domain });
         var responseDto = await _httpService.SendPostRequest<UploadInvoiceResponseDto>(Urls.SendInvoices.Upload, data);
         return responseDto;
     }
 
     public async Task<UploadInvoiceSignedResDto> UploadInvoiceSigned(UploadInvoiceSignedXmlReqDto dto) {
         var bytes = Encoding.ASCII.GetBytes(dto.Xml);
-        var invoiceBase64 = HttpUtils.Convert(bytes);
-        var data = HttpUtils.ComposePostBody(new { invoiceBase64, dto.SenderPIVA, dto.SkipExtraSchema });
+        var dataFile = HttpUtils.Convert(bytes);
+        var skipExtraSchema = dto.SkipExtraSchema.ToString();
+        var senderPIVA = dto.SenderPIVA ?? "";
+        var data = HttpUtils.ComposePostBody(new { dataFile, senderPIVA, skipExtraSchema });
         var responseDto = await _httpService.SendPostRequest<UploadInvoiceSignedResDto>(Urls.SendInvoices.UploadSigned, data);
         return responseDto;
     }
