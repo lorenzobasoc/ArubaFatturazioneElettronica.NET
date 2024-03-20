@@ -10,6 +10,6 @@ public interface ISearchReceivedInvoices
     Task<StreamResultDto> GetZipByFilename(string filename);
     Task<GetByInvoiceIdResDto> GetByInvoiceId(string invoiceId, bool includePdf = false, bool includeFile = true);
     Task<GetByIdSdiResDto> GetByIdSdi(string idSdi, bool includePdf = false, bool includeFile = true);
-    Task<GetInvoiceWithUnsignedFileResDto> GetInvoiceWithUnsignedFile(bool includeFile = false);
+    Task<GetInvoiceWithUnsignedFileResDto> GetInvoiceWithUnsignedFile(string invoiceFilename, string invoiceId, bool includeFile = false);
     Task<StreamResultDto> Pdd(string invoiceFilename, string invoiceId);
 }

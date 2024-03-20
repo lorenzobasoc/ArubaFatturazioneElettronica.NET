@@ -34,7 +34,7 @@ public class InvoiceUtilities
             var line = GenerateTransportCostLine(detailLines, data.TransportCost);
             detailLines.Add(line);
         }
-        var summaryDetail = CreateDataSummary(detailLines, data.IsPaInvoice);
+        var summaryDetail = CreateVatSummary(detailLines, data.IsPaInvoice);
         var totalIva = summaryDetail.Sum(line => line.Imposta);
         var totalImponibile = summaryDetail.Sum(line => line.ImponibileImporto);
         var invoice = new FatturaElettronica {
@@ -126,62 +126,6 @@ public class InvoiceUtilities
         return invoice;
     }
 
-    private static DatiRiepilogo[] CreateDataSummary(List<DettaglioLinee> detailLines, bool isPaInvoice) {
-        var dati = new List<DatiRiepilogo>();
-        var groups = detailLines
-            .GroupBy(d => d.AliquotaIVA)
-            .ToList();
-        var esigibility = isPaInvoice ? "S" : "I";
-        foreach (var g in groups) {
-            var tot = g.Sum(d => d.PrezzoTotale);
-            switch (g.Key) {
-                case VENTIDUE:
-                    dati.Add(new DatiRiepilogo {
-                        AliquotaIVA = VENTIDUE,
-                        ImponibileImporto = decimal.Round(tot, 2),
-                        Imposta = decimal.Round(tot * VENTIDUE / 100M, 2),
-                        EsigibilitaIVA = esigibility,
-                    });
-                    break;
-                case DIECI:
-                    dati.Add(new DatiRiepilogo {
-                        AliquotaIVA = DIECI,
-                        ImponibileImporto = decimal.Round(tot, 2),
-                        Imposta = decimal.Round(tot * DIECI / 100M, 2),
-                        EsigibilitaIVA = esigibility,
-                    });
-                    break;
-                case CINQUE:
-                    dati.Add(new DatiRiepilogo {
-                        AliquotaIVA = CINQUE,
-                        ImponibileImporto = decimal.Round(tot, 2),
-                        Imposta = decimal.Round(tot * CINQUE / 100M, 2),
-                        EsigibilitaIVA = esigibility,
-                    });
-                    break;
-                case QUATTRO:
-                    dati.Add(new DatiRiepilogo {
-                        AliquotaIVA = QUATTRO,
-                        ImponibileImporto = decimal.Round(tot, 2),
-                        Imposta = decimal.Round(tot * QUATTRO / 100M, 2),
-                        EsigibilitaIVA = esigibility,
-                    });
-                    break;
-                case ZERO:
-                    dati.Add(new DatiRiepilogo {
-                        AliquotaIVA = ZERO,
-                        ImponibileImporto = decimal.Round(tot, 2),
-                        Imposta = ZERO,
-                        RiferimentoNormativo = InvoiceConstants.RIF_FORMATIVO,
-                    });
-                    break;
-                default:
-                    break;
-            }
-        }
-        return [.. dati];
-    }
-
     private static DatiAnagrafici CreatePersonalData(CustomerDataDto data) {
         var ad = new DatiAnagrafici();
         var vatRegex = new Regex(Regexes.VAT_NUMBER_PATTERN);
@@ -216,44 +160,115 @@ public class InvoiceUtilities
     }
 
     private static List<DettaglioLinee> CreateDetailLines(List<ItemDto> items) {
-        var listDetailLines = new List<DettaglioLinee>();
+        var detailLines = new List<DettaglioLinee>();
         for (var i = 0; i < items.Count; i++) {
-            var newDetail = new DettaglioLinee {
-                NumeroLinea = i,
+            var newLine = new DettaglioLinee {
+                NumeroLinea = i + 1,
                 Descrizione = items[i].Description,
                 Quantita = items[i].Quantity + 0.00M,
                 UnitaMisura = items[i].MeasureUnit,
                 PrezzoUnitario = items[i].UnitPrice,
                 PrezzoTotale = items[i].UnitPrice * items[i].Quantity,
             };
-            switch (items[i].Vat) {
-                case VatTypes.VENTIDUE:
-                    newDetail.AliquotaIVA = VAT_VALUES[VatTypes.VENTIDUE];
+            AddVat(newLine, items[i].Vat);
+            detailLines.Add(newLine);
+        }
+        return detailLines;
+    }
+
+    private static DatiRiepilogo[] CreateVatSummary(List<DettaglioLinee> detailLines, bool isPaInvoice) {
+        var dati = new List<DatiRiepilogo>();
+        var groups = detailLines
+            .GroupBy(d => new { d.AliquotaIVA, d.Natura } )
+            .ToList();
+        var esigibility = isPaInvoice ? "S" : "I";
+        foreach (var g in groups) {
+            var tot = g.Sum(d => d.PrezzoTotale);
+            switch (g.Key.AliquotaIVA) {
+                case VENTIDUE:
+                    dati.Add(new DatiRiepilogo {
+                        AliquotaIVA = VENTIDUE,
+                        ImponibileImporto = decimal.Round(tot, 2),
+                        Imposta = decimal.Round(tot * VENTIDUE / 100M, 2),
+                        EsigibilitaIVA = esigibility,
+                    });
                     break;
-                case VatTypes.DIECI:
-                    newDetail.AliquotaIVA = VAT_VALUES[VatTypes.DIECI];
+                case DIECI:
+                    dati.Add(new DatiRiepilogo {
+                        AliquotaIVA = DIECI,
+                        ImponibileImporto = decimal.Round(tot, 2),
+                        Imposta = decimal.Round(tot * DIECI / 100M, 2),
+                        EsigibilitaIVA = esigibility,
+                    });
                     break;
-                case VatTypes.CINQUE:
-                    newDetail.AliquotaIVA = VAT_VALUES[VatTypes.CINQUE];
+                case CINQUE:
+                    dati.Add(new DatiRiepilogo {
+                        AliquotaIVA = CINQUE,
+                        ImponibileImporto = decimal.Round(tot, 2),
+                        Imposta = decimal.Round(tot * CINQUE / 100M, 2),
+                        EsigibilitaIVA = esigibility,
+                    });
                     break;
-                case VatTypes.QUATTRO:
-                    newDetail.AliquotaIVA = VAT_VALUES[VatTypes.QUATTRO];
+                case QUATTRO:
+                    dati.Add(new DatiRiepilogo {
+                        AliquotaIVA = QUATTRO,
+                        ImponibileImporto = decimal.Round(tot, 2),
+                        Imposta = decimal.Round(tot * QUATTRO / 100M, 2),
+                        EsigibilitaIVA = esigibility,
+                    });
                     break;
-                case VatTypes.ZERO:
-                    newDetail.AliquotaIVA = VAT_VALUES[VatTypes.ZERO];
-                    newDetail.Natura = InvoiceConstants.NATURA_ESC;
-                    break;
-                case VatTypes.EX_ART_15:
-                    newDetail.AliquotaIVA = VAT_VALUES[VatTypes.EX_ART_15];
-                    newDetail.Natura = InvoiceConstants.NATURA_EX_ART_15;
+                case ZERO:
+                    if (g.Key.Natura == InvoiceConstants.NATURA_ESC) {
+                        dati.Add(new DatiRiepilogo {
+                            AliquotaIVA = ZERO,
+                            ImponibileImporto = decimal.Round(tot, 2),
+                            Imposta = ZERO,
+                            Natura = InvoiceConstants.NATURA_ESC,
+                            RiferimentoNormativo = InvoiceConstants.ESC_DESCRIPTION,
+                        });
+                    } else {
+                        dati.Add(new DatiRiepilogo {
+                            AliquotaIVA = ZERO,
+                            ImponibileImporto = decimal.Round(tot, 2),
+                            Imposta = ZERO,
+                            Natura = InvoiceConstants.NATURA_EX_ART_15,
+                            RiferimentoNormativo = InvoiceConstants.EX_ART_15_DESCRIPTION,
+                        });
+                    }
                     break;
                 default:
-                    newDetail.AliquotaIVA = 0.00M;
-                    newDetail.Natura = InvoiceConstants.NATURA_ESC;
                     break;
             }
-            listDetailLines.Add(newDetail);
         }
-        return listDetailLines;
+        return [.. dati];
+    }
+
+    private static void AddVat(DettaglioLinee line, VatTypes vat) {
+        switch (vat) {
+            case VatTypes.VENTIDUE:
+                line.AliquotaIVA = VAT_VALUES[VatTypes.VENTIDUE];
+                break;
+            case VatTypes.DIECI:
+                line.AliquotaIVA = VAT_VALUES[VatTypes.DIECI];
+                break;
+            case VatTypes.CINQUE:
+                line.AliquotaIVA = VAT_VALUES[VatTypes.CINQUE];
+                break;
+            case VatTypes.QUATTRO:
+                line.AliquotaIVA = VAT_VALUES[VatTypes.QUATTRO];
+                break;
+            case VatTypes.ZERO:
+                line.AliquotaIVA = VAT_VALUES[VatTypes.ZERO];
+                line.Natura = InvoiceConstants.NATURA_ESC;
+                break;
+            case VatTypes.EX_ART_15:
+                line.AliquotaIVA = VAT_VALUES[VatTypes.EX_ART_15];
+                line.Natura = InvoiceConstants.NATURA_EX_ART_15;
+                break;
+            default:
+                line.AliquotaIVA = 0.00M;
+                line.Natura = InvoiceConstants.NATURA_ESC;
+                break;
+        }
     }
 }
