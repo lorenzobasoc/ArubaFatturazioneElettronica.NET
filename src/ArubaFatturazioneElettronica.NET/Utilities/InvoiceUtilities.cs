@@ -3,13 +3,13 @@ using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using ArubaFatturazioneElettronica.NET.Constants;
 using ArubaFatturazioneElettronica.NET.Dtos.SendInvoices.Request;
+using ArubaFatturazioneElettronica.NET.Enumerations;
 using ArubaFatturazioneElettronica.NET.Invoices;
 using ArubaFatturazioneElettronica.NET.Invoices.Resource;
 using ArubaFatturazioneElettronica.NET.Invoices.Resource.Data;
 using ArubaFatturazioneElettronica.NET.Invoices.Resource.Data.Body;
 using ArubaFatturazioneElettronica.NET.Invoices.Resource.Data.Body.DatiGenerali;
 using ArubaFatturazioneElettronica.NET.Invoices.Resource.Data.Header;
-using CsbEcommerce.Enumerations;
 
 using static ArubaFatturazioneElettronica.NET.Utilities.VatDictionary;
 

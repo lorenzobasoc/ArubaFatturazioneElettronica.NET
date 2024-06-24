@@ -13,15 +13,6 @@ public class HttpHandler
         _client = new HttpClient();
     }
 
-    public async Task<T> SendGetRequest<T>(string url, List<string> parameters, string accessToken) {
-        var request = PrepareGetRequest(url, parameters, accessToken);
-        var response = await Send(request);
-        var content = await response.Content.ReadAsStringAsync();
-        var responseDto = JsonUtils.Deserialize<T>(content);
-        return responseDto;
-    }
-
-
     public async Task<HttpResponseMessage> Send(HttpRequestMessage request) {
         var response = await _client.SendAsync(request);
         if (!response.IsSuccessStatusCode) {

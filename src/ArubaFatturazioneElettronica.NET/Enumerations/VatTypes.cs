@@ -1,4 +1,4 @@
-namespace CsbEcommerce.Enumerations;
+namespace ArubaFatturazioneElettronica.NET.Enumerations;
 
 public enum VatTypes
 {

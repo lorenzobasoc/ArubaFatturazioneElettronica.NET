@@ -1,4 +1,4 @@
-using CsbEcommerce.Enumerations;
+using ArubaFatturazioneElettronica.NET.Enumerations;
 
 namespace ArubaFatturazioneElettronica.NET.Dtos.SendInvoices.Request;
 
