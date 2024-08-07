@@ -10,15 +10,6 @@ public class Auth(HttpService httpService) : IAuth
 {
     private readonly HttpService _httpService = httpService;
 
-    // public async Task<AccessTokenDto> SignIn() {
-    //     var dto = await _httpService.SignIn();
-    //     return dto;
-    // }
-
-    // public async Task RefreshToken() {
-
-    // }
-
     public async Task<UserInfoDto> GetUserInfo() {
         var responseDto = await _httpService.SendGetRequest<UserInfoDto>(Urls.Auth.UserInfo, null);
         return responseDto;
