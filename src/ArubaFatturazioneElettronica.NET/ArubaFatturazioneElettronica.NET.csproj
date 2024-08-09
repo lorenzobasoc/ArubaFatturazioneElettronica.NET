@@ -8,6 +8,10 @@
     <Authors>Lorenzo Basoc</Authors>
     <Description>C# wrapper for Aruba Fatturazione Elettronica API</Description>
     <Copyright>MIT</Copyright>
+    <PackageId>ArubaFatturazioneElettronica.NET</PackageId>
+    <Version>1.0.0</Version>
+    <PackageProjectUrl>https://github.com/lorenzobasoc/ArubaFatturazioneElettronica.NET</PackageProjectUrl>
+    <PackageTags>aruba;fatturazione elettronica;</PackageTags>
   </PropertyGroup>
 
 </Project>
