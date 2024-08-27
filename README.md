@@ -2,8 +2,6 @@
 
 **ArubaFatturazioneElettronica.NET** is a Aruba Fatturazione Elettronica API client for C# developers.
 
-**Aruba Fatturazione Elettronica** is an open-source search engine
-
 <hr>
 
 ## 🔧 Installation
