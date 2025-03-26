@@ -16,9 +16,9 @@ public class ArubaApi : IArubaApi
     public ISearchSentInvoiceNotifications SearchNotificationSentInvoices { get; }
     public ISearchReceivedInvoiceNotifications SearchNotificationReceivedInvoices { get; }
 
-    public ArubaApi(string username, string password) {
+    public ArubaApi(string username, string password, string env) {
         var requester = new HttpHandler();
-        var httpService = new HttpService(username, password, requester);
+        var httpService = new HttpService(username, password, requester, env);
         Auth = new Auth(httpService);
         FinancialCommunications = new FinancialCommunications(httpService);
         SendInvoices = new SendInvoices(httpService);

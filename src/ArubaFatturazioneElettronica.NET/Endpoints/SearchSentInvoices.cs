@@ -26,7 +26,8 @@ public class SearchSentInvoices(HttpService httpService) : ISearchSentInvoices
             { nameof(endDate), (endDate ?? DateTime.Now).ToString("o") },
         };
         var queryString = HttpUtils.ComposeQueryString(queryParams);
-        var responseDto = await _httpService.SendGetRequest<FindByUsernameResDto>(Urls.SearchSentInvoices.FindByUsername, queryString);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<FindByUsernameResDto>(baseUrl + Urls.SearchSentInvoices.FindByUsername, queryString);
         return responseDto;
     }
 
@@ -37,7 +38,8 @@ public class SearchSentInvoices(HttpService httpService) : ISearchSentInvoices
             {nameof(includeFile), includeFile.ToString()},
         };
         var queryString = HttpUtils.ComposeQueryString(queryParams);
-        var responseDto = await _httpService.SendGetRequest<GetByFilenameResDto>(Urls.SearchSentInvoices.GetByFilename, queryString);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<GetByFilenameResDto>(baseUrl + Urls.SearchSentInvoices.GetByFilename, queryString);
         return responseDto;
     }
 
@@ -46,7 +48,8 @@ public class SearchSentInvoices(HttpService httpService) : ISearchSentInvoices
             {nameof(filename), filename},
         };
         var queryString = HttpUtils.ComposeQueryString(queryParams);
-        var responseDto = await _httpService.SendStreamGetRequest(Urls.SearchSentInvoices.GetZipByFilename, queryString);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendStreamGetRequest(baseUrl + Urls.SearchSentInvoices.GetZipByFilename, queryString);
         return responseDto;
     }
 
@@ -56,7 +59,8 @@ public class SearchSentInvoices(HttpService httpService) : ISearchSentInvoices
             {nameof(includeFile), includeFile.ToString()},
         };
         var queryString = HttpUtils.ComposeQueryString(queryParams);
-        var responseDto = await _httpService.SendGetRequest<GetByInvoiceIdResDto>(Urls.SearchSentInvoices.GetByInvoiceId + $"/{invoiceId}", queryString);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<GetByInvoiceIdResDto>(baseUrl + Urls.SearchSentInvoices.GetByInvoiceId + $"/{invoiceId}", queryString);
         return responseDto;
     }
 
@@ -67,7 +71,8 @@ public class SearchSentInvoices(HttpService httpService) : ISearchSentInvoices
             {nameof(includeFile), includeFile.ToString()},
         };
         var queryString = HttpUtils.ComposeQueryString(queryParams);
-        var responseDto = await _httpService.SendGetRequest<GetByIdSdiResDto>(Urls.SearchSentInvoices.GetByIdSdi, queryString);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<GetByIdSdiResDto>(baseUrl + Urls.SearchSentInvoices.GetByIdSdi, queryString);
         return responseDto;
     }
 
@@ -82,7 +87,8 @@ public class SearchSentInvoices(HttpService httpService) : ISearchSentInvoices
             {nameof(invoiceId), invoiceId},
         };
         var queryString = HttpUtils.ComposeQueryString(queryParams);
-        var stream = await _httpService.SendStreamGetRequest(Urls.SearchSentInvoices.Pdd, queryString);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var stream = await _httpService.SendStreamGetRequest(baseUrl + Urls.SearchSentInvoices.Pdd, queryString);
         return stream;
     }
 }

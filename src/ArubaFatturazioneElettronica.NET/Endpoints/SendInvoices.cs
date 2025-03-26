@@ -22,7 +22,8 @@ public class SendInvoices(HttpService httpService) : ISendInvoices
         var credential = dto.Credential ?? "";
         var domain = dto.Domain ?? "";
         var data = HttpUtils.ComposePostBody(new { dataFile, senderPIVA, skipExtraSchema, credential, domain });
-        var responseDto = await _httpService.SendPostRequest<UploadInvoiceResponseDto>(Urls.SendInvoices.Upload, data);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendPostRequest<UploadInvoiceResponseDto>(baseUrl + Urls.SendInvoices.Upload, data);
         return responseDto;
     }
 
@@ -34,7 +35,8 @@ public class SendInvoices(HttpService httpService) : ISendInvoices
         var skipExtraSchema = dto.SkipExtraSchema.ToString();
         var senderPIVA = dto.SenderPIVA ?? "";
         var data = HttpUtils.ComposePostBody(new { dataFile, senderPIVA, skipExtraSchema });
-        var responseDto = await _httpService.SendPostRequest<UploadInvoiceSignedResDto>(Urls.SendInvoices.UploadSigned, data);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendPostRequest<UploadInvoiceSignedResDto>(baseUrl + Urls.SendInvoices.UploadSigned, data);
         return responseDto;
     }
 
@@ -46,7 +48,8 @@ public class SendInvoices(HttpService httpService) : ISendInvoices
         var credential = dto.Credential ?? "";
         var domain = dto.Domain ?? "";
         var data = HttpUtils.ComposePostBody(new { dataFile, senderPIVA, skipExtraSchema, credential, domain });
-        var responseDto = await _httpService.SendPostRequest<UploadInvoiceResponseDto>(Urls.SendInvoices.Upload, data);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendPostRequest<UploadInvoiceResponseDto>(baseUrl + Urls.SendInvoices.Upload, data);
         return responseDto;
     }
 
@@ -56,7 +59,8 @@ public class SendInvoices(HttpService httpService) : ISendInvoices
         var skipExtraSchema = dto.SkipExtraSchema.ToString();
         var senderPIVA = dto.SenderPIVA ?? "";
         var data = HttpUtils.ComposePostBody(new { dataFile, senderPIVA, skipExtraSchema });
-        var responseDto = await _httpService.SendPostRequest<UploadInvoiceSignedResDto>(Urls.SendInvoices.UploadSigned, data);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendPostRequest<UploadInvoiceSignedResDto>(baseUrl + Urls.SendInvoices.UploadSigned, data);
         return responseDto;
     }
 }

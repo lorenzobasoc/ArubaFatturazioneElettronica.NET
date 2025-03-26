@@ -15,7 +15,8 @@ public class SearchSentInvoiceNotification(HttpService httpService) : ISearchSen
             {nameof(filename), filename},
         };
         var queryString = HttpUtils.ComposeQueryString(queryParams);
-        var responseDto = await _httpService.SendGetRequest<GetByFilenameNotifyResDto>(Urls.SearchSentInvoiceNotification.GetByFilename, queryString);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<GetByFilenameNotifyResDto>(baseUrl + Urls.SearchSentInvoiceNotification.GetByFilename, queryString);
         return responseDto;
     }
 
@@ -24,12 +25,14 @@ public class SearchSentInvoiceNotification(HttpService httpService) : ISearchSen
             {nameof(invoiceFilename), invoiceFilename},
         };
         var queryString = HttpUtils.ComposeQueryString(queryParams);
-        var responseDto = await _httpService.SendGetRequest<GetByInvoiceFilenameNotifyResDto>(Urls.SearchSentInvoiceNotification.GetByInvoiceFilename, queryString);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<GetByInvoiceFilenameNotifyResDto>(baseUrl + Urls.SearchSentInvoiceNotification.GetByInvoiceFilename, queryString);
         return responseDto;
     }
 
     public async Task<GetByInvoiceIdNotifyResDto> GetByInvoiceId(string invoiceId) {
-        var responseDto = await _httpService.SendGetRequest<GetByInvoiceIdNotifyResDto>(Urls.SearchSentInvoiceNotification.GetByInvoiceId + $"/{invoiceId}", null);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<GetByInvoiceIdNotifyResDto>(baseUrl + Urls.SearchSentInvoiceNotification.GetByInvoiceId + $"/{invoiceId}", null);
         return responseDto;
     }
 }

@@ -14,19 +14,22 @@ public class FinancialCommunications(HttpService httpService) : IFinancialCommun
 
     public async Task<CreateTransmissionResDto> CreateTransmissionRequest(CreateTransmissionReqtDto dto) {
         var data = HttpUtils.ComposePostBody(dto);
-        var responseDto = await _httpService.SendPostRequest<CreateTransmissionResDto>(Urls.FinancialCommunications.CreateTransmissionReq, data);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendPostRequest<CreateTransmissionResDto>(baseUrl + Urls.FinancialCommunications.CreateTransmissionReq, data);
         return responseDto;
     }
     
     public async Task<GetTransmissionInfoResDto> GetTransmissionInfoRequest(GetTransmissionInfoReqDto dto) {
         var data = HttpUtils.ComposePostBody(dto);
-        var responseDto = await _httpService.SendPostRequest<GetTransmissionInfoResDto>(Urls.FinancialCommunications.GetTransmissionInfoReq, data);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendPostRequest<GetTransmissionInfoResDto>(baseUrl + Urls.FinancialCommunications.GetTransmissionInfoReq, data);
         return responseDto;
     }
 
     public async Task<StreamResultDto> Pdd(PddReqDto dto) {
         var data = HttpUtils.ComposePostBody(dto);
-        var responseDto = await _httpService.SendStreamPostRequest(Urls.FinancialCommunications.Pdd, data);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendStreamPostRequest(baseUrl + Urls.FinancialCommunications.Pdd, data);
         return responseDto;
     }
 }

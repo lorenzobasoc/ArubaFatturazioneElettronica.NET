@@ -13,12 +13,14 @@ public class SendOutcomeClient(HttpService httpService) : ISendOutcomeClient
 
     public async Task<SendOutcomeClientResDto> SendEsitoCommittente(SendOutcomeClientReqDto dto) {
         var data = HttpUtils.ComposePostBody(dto);
-        var responseDto = await _httpService.SendPostRequest<SendOutcomeClientResDto>(Urls.SendOutcomeClient.Send, data);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendPostRequest<SendOutcomeClientResDto>(baseUrl + Urls.SendOutcomeClient.Send, data);
         return responseDto;
     }
 
     public async Task<SendInvoiceOutcomeClientReqDto> StateOfSendEsitoCommittente(string filename) {
-        var responseDto = await _httpService.SendGetRequest<SendInvoiceOutcomeClientReqDto>(Urls.SendOutcomeClient.Send + $"/{filename}", null);
+        var baseUrl = Urls.GetBaseUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<SendInvoiceOutcomeClientReqDto>(baseUrl + Urls.SendOutcomeClient.Send + $"/{filename}", null);
         return responseDto;
     }
 }

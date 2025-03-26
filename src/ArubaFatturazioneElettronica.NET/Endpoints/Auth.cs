@@ -11,7 +11,8 @@ public class Auth(HttpService httpService) : IAuth
     private readonly HttpService _httpService = httpService;
 
     public async Task<UserInfoDto> GetUserInfo() {
-        var responseDto = await _httpService.SendGetRequest<UserInfoDto>(Urls.Auth.UserInfo, null);
+        var baseUrl = Urls.GetBaseAuthUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<UserInfoDto>(baseUrl + Urls.Auth.UserInfo, null);
         return responseDto;
     }
 
@@ -24,12 +25,14 @@ public class Auth(HttpService httpService) : IAuth
             {nameof(page), page.ToString()},
         };
         var queryString = HttpUtils.ComposeQueryString(queryParams);
-        var responseDto = await _httpService.SendGetRequest<MulticedentiDto>(Urls.Auth.Multicedenti, queryString);
+        var baseUrl = Urls.GetBaseAuthUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<MulticedentiDto>(baseUrl + Urls.Auth.Multicedenti, queryString);
         return responseDto;
     }
 
     public async Task<MulticedenteDto> GetMulticedenteById(string id) {
-        var responseDto = await _httpService.SendGetRequest<MulticedenteDto>(Urls.Auth.Multicedenti + $"/{id}", null);
+        var baseUrl = Urls.GetBaseAuthUrl(_httpService.Env);
+        var responseDto = await _httpService.SendGetRequest<MulticedenteDto>(baseUrl + Urls.Auth.Multicedenti + $"/{id}", null);
         return responseDto;
     }
 }
