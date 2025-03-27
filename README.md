@@ -23,7 +23,7 @@ Install-Package ArubaFatturazioneElettronica.NET
 class Program
 {
     static async Task Main(string[] args) {
-        var client = new ArubaApi("username", "password");
+        var client = new ArubaApi("username", "password", AppEnvironments.Development);
 
         // Get user's infos
         var userInfo = await arubaApi.Auth.GetUserInfo();
