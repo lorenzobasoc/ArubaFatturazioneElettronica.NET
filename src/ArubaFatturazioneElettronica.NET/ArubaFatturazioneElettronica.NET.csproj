@@ -5,11 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>C# wrapper for Aruba Fatturazione Elettronica API</Title>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>Lorenzo Basoc</Authors>
     <Description>C# wrapper for Aruba Fatturazione Elettronica API</Description>
     <Copyright>MIT</Copyright>
     <PackageId>ArubaFatturazioneElettronica.NET</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <PackageProjectUrl>https://github.com/lorenzobasoc/ArubaFatturazioneElettronica.NET</PackageProjectUrl>
     <PackageTags>aruba;fatturazione elettronica;</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -20,6 +21,7 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
